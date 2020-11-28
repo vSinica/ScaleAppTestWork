@@ -9,5 +9,8 @@
         <module name="ScaleAppTestWork" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="untitled" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
