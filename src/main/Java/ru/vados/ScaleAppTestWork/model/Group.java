@@ -14,18 +14,31 @@ public class Group {
     private Long id;
 
     private String groupNumber;
-//
-//    private int studentCount;
-//
-//   /// private List<Student> students = new ArrayList<>();
-//
-////    public void addStudent(Student student) {
-////        this.students.add(student);
-////    }
-////
-////    public void reomoveStudent(Student student){
-////        this.students.remove(student);
-//    }
+
+    private int studentCount;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE},
+            orphanRemoval = true,
+            mappedBy = "group"
+    )
+    private List<Student> students = new ArrayList<>();
+
+    public List<Student> getAllStudent(){
+        return this.students;
+    }
+
+    public boolean HasStudent(){
+        return !students.isEmpty();
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+    }
+
+    public void reomoveStudent(Student student){
+        this.students.remove(student);
+    }
 
     public Group() {
     }
@@ -38,21 +51,21 @@ public class Group {
         this.id = id;
     }
 
-//    public String getGroupNumber() {
-//        return groupNumber;
-//    }
-//
-//    public void setGroupNumber(String groupNumber) {
-//        this.groupNumber = groupNumber;
-//    }
-//
-//    public int getStudentCount() {
-//        return studentCount;
-//    }
-//
-//    public void setStudentCount(int studentCount) {
-//        this.studentCount = studentCount;
-//    }
+    public String getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(String groupNumber) {
+        this.groupNumber = groupNumber;
+    }
+
+    public int getStudentCount() {
+        return studentCount;
+    }
+
+    public void setStudentCount(int studentCount) {
+        this.studentCount = studentCount;
+    }
 
 
 }

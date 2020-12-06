@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>All groups</title>
+    <style type="text/css">
+        th, td {
+            border: solid black 1px ;
+            padding: 5px 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Student`s</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Group</th>
+        <th>Stud count</th>
+        <th>Show student list</th>
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="group : ${groups}">
+        <td th:text="${group.groupNumber}">name</td>
+        <td th:text="${group.studentCount}">name</td>
+        <td>
+            <form th:method="GET" th:action="@{/showStudentInGroup/{id}(id=${group.getGroupNumber()})}">
+                <input type="submit" value="SHOW STUDENT">
+            </form>
+        </td>
+
+        <td>
+            <form th:method="POST" th:action="@{/AllGroup/delete/{id}(id=${group.getGroupNumber()})}">
+                <input type="submit" value="DELETE GROUP">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+
+<form action="/AllGroup" method="post">
+    <div>
+        <label>Group new</label>
+        <input type="text" id="groupNumber" name="groupNumber" value=""></input>
+    </div>
+    <div>
+        <button type="submit">add new group</button>
+    </div>
+</form>
+
+
+
+</form></body>
+</html>
