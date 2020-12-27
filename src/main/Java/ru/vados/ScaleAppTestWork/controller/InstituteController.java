@@ -24,7 +24,7 @@ public class InstituteController {
     private StudentRepository studentRepository;
 
     @PostMapping("/AllGroup")
-    public String creteNewGroup(@ModelAttribute("group")Group group){
+    public String createNewGroup(@ModelAttribute("group")Group group){
         groupRepository.save(group);
 
         return "redirect:/AllGroup";
@@ -117,8 +117,6 @@ public class InstituteController {
             model.addAttribute("groupNumber",group_id);
             return "showStudentInGroup";
         }
-
-
 
     }
 

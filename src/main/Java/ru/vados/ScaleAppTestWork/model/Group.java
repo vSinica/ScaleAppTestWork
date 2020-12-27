@@ -1,6 +1,9 @@
 package ru.vados.ScaleAppTestWork.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,7 @@ public class Group {
             orphanRemoval = true,
             mappedBy = "group"
     )
+    @JsonManagedReference
     private List<Student> students = new ArrayList<>();
 
     public List<Student> getAllStudent(){

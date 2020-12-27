@@ -1,6 +1,8 @@
 package ru.vados.ScaleAppTestWork.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -19,6 +21,7 @@ public class Student {
 
    private String name;
 
+   @JsonFormat(pattern="yyyy-MM-dd")
    private Date adoptionDate;
 
    public Date getAdoptionDate() {
@@ -40,6 +43,7 @@ public class Student {
    @ManyToOne(fetch = FetchType.EAGER)
    @OnDelete(action = OnDeleteAction.CASCADE)
    @JoinColumn(name = "group_id")
+   @JsonBackReference
    private Group group;
 
    public Student() {
